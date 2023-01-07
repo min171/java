@@ -1,0 +1,45 @@
+package algorithm;
+import java.util.*;
+/*Mark X in the position of the entered two-dimensional coordinates*/
+public class X {
+	/*public static void main(String[] args) {
+		
+		final int SIZE = 10;
+		char[][] coord2D = {{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'},
+							{'0','0','0','0','0','0','0','0','0','0'}};
+              
+              Scanner scanner = new Scanner(System.in);
+		int x = 0, y = 0;
+		while(true) {
+			System.out.printf("Input a xy coordinates. (End is 00): " );
+			String input = scanner.nextLine();
+			
+			if(input.length() == 2) {
+				x = input.charAt(0) - '0';
+				y = input.charAt(1) - '0';
+				
+				if(x == 0 && y == 0) {
+					break;
+				}
+			}
+			
+			if(input.length() !=2 || x <= 0 || x >= SIZE || y <= 0 || y >= SIZE) {
+				System.out.println("Wrong inputting. Please input again.");
+				continue;
+			}
+			coord2D[x-1][y-1] = 'X'; 
+			
+			for(int i = 0; i < SIZE; i++) {
+				System.out.println(coord2D[i]);
+			}
+		}
+	}*/
+}
