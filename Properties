@@ -1,0 +1,25 @@
+package usefulClass1;
+import java.io.*;
+import java.util.*;
+
+public class PropertiesEx2 {
+	public static void main(String[] args) {
+		if(args.length != 1) {
+			System.out.println("USAGE: java PropertiesEx2 INPUTFILENAME");
+			System.exit(0);
+		}
+		
+		Properties prop = new Properties();
+		
+		String inputFile = args[0];
+		
+		try {
+			prop.load(new FileInputStream(inputFile));
+		} catch(IOException e) {
+			System.out.println("Not Found.");
+			System.exit(0);
+		}
+		
+		String name = prop.getProperty("name");
+		String[] data = prop.getProperty("data").split(",");
+		int max = 0, min = 0, sum = 0;
