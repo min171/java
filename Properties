@@ -23,3 +23,21 @@ public class PropertiesEx2 {
 		String name = prop.getProperty("name");
 		String[] data = prop.getProperty("data").split(",");
 		int max = 0, min = 0, sum = 0;
+		for(int i = 0; i < data.length; i++) {
+			int intValue = Integer.valueOf(data[i]);
+			
+			if(i == 0) max = min = intValue;
+			if(max < intValue)
+				max = intValue;
+			else if (min > intValue)
+				min = intValue;
+			sum += intValue;
+		}
+		
+		System.out.println("name: " + name);
+		System.out.println("max: " + max);
+		System.out.println("min: " + min);
+		System.out.println("total: " + sum);
+		System.out.println("average: " + (sum * 100.0/data.length)/100);
+	}
+}
