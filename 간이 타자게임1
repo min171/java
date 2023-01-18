@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Exercise13_8 {
+	Vector words = new Vector();
+	String[] data = { "원영", "유진", "이서", "가을", "리즈", "레이" };
+	
+	int interval = 3 * 1000;
+	
+	WordGenerator wg = new WordGenerator();
+	public static void main(String[] args) {
+		Exercise13_8 game = new Exercise13_8();
+		
+		game.wg.start();
+		
+		Vector words = game.words;
+		
+		while(true) {
+			
+			System.out.println(words);
+			
+			String prompt = ">>";
+			System.out.print(prompt);
+			
+			Scanner s = new Scanner(System.in);
+			String input = s.nextLine().trim();
+			
+			int index = words.indexOf(input);
+			
+			if(index != -1)
+				words.remove(index);
+		}
+	}
+	
+	class WordGenerator extends Thread{
+		public void run() {
+			while(true) {
+				try {
+					Thread.sleep(interval);
+				} catch(Exception e) {}
+				
+				int index = (int)(Math.random() * data.length);
+				words.add(data[index]);
+			}
+		}
+	}
+}
