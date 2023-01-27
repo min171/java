@@ -1,0 +1,43 @@
+import java.util.*;
+import java.util.function.*;
+
+public class LambdaEx5 {
+	public static void main(String[] args) {
+		IntSupplier s = () -> (int)(Math.random()*100) + 1; //1 ~ 100 사이의 수를 하나 반환한다. s.getAsInt()구현 
+		IntConsumer c = i -> System.out.print(i + ", "); //정수 하나를 받아서 i,로 출력한다. c.accept(i)구현
+		IntPredicate p = i -> i % 2 == 0;//정수 하나를 받아서 그것이 2의 배수인지 확인한다. p.test(i)구현.
+		IntUnaryOperator op = i -> i / 10 * 10; //정수 하나를 받아서 일의 자리를 0으로 만들어 반환한다. op.applyAsInt()구현
+		int[] arr = new int[10];
+		
+		makeRandomList(s, arr); //arr에 10개의 아무 수 넣기.
+		System.out.println(Arrays.toString(arr)); //arr 출력하기
+		printEvenNum(p, c, arr); //짝수를 [e1, e2, ..., eN,]으로 출력 
+		int[] newArr = doSomething(op, arr);
+		System.out.println(newArr);
+	}
+	
+	static int[] doSomething(IntUnaryOperator op, int[] arr){
+		int[] newArr = new int[arr.length];//길이 10인 새 리스트 생성 
+		
+		for(int i = 0; i < newArr.length; i++) {
+			newArr[i] = op.applyAsInt(arr[i]); // 기존 리스트에 있던 값들의 일의 자리를 모두 영으로 만들어서 저장
+		}
+		
+		return newArr;
+	}
+	
+	static void printEvenNum(IntPredicate p, IntConsumer c, int[] arr) {
+		System.out.print("[");
+		for(int i : arr){
+			if(p.test(i))
+				c.accept(i);
+		}
+		System.out.println("]");
+	}
+	
+	static void makeRandomList(IntSupplier s, int[] arr) {
+		for(int i = 0; i < 10; i++) {
+			arr[i] = s.getAsInt();
+		}
+	}
+}
